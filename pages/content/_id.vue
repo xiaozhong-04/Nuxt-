@@ -9,8 +9,12 @@
 export default {
   head() {
     return {
-      title: this.topic.title
-    }
+      title: this.topic.title,
+      meta: [
+        { name: "keywords", content: this.topic.title },
+        { hid: "description", name: "description", content: this.topic.title }
+      ]
+    };
   },
   async asyncData({ $axios, params, payload }) {
     if (payload) return { topic: payload };
