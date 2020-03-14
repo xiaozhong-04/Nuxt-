@@ -1,4 +1,4 @@
-
+import axios from "axios"
 export default {
   mode: 'universal',
   /*
@@ -55,6 +55,18 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+    }
+  },
+  generate: {
+    routes () {
+      return axios.get('https://cnodejs.org/api/v1/topics').then((res) => {
+          return res.data.data.map((v) => {
+            return {
+             route: '/content/' + v.id,
+             payload: v
+            }
+          })
+        })
     }
   }
 }
