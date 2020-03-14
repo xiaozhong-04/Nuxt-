@@ -21,13 +21,18 @@ export default {
   loading: { color: '#fff' },
   /*
   ** Global CSS
+  ** 全局样式文件
   */
   css: [
+    "assets/main.css"
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    // '~/plugins/mock'
+    // {src: '~/plugins/mock', mode: 'server'} // 只在服务器执行
+    {src: '~/plugins/mock', mode: 'client'} // 只在客户端执行
   ],
   /*
   ** Nuxt.js dev-modules
@@ -46,6 +51,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: ''
   },
   /*
   ** Build configuration

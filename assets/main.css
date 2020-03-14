@@ -1,0 +1,6 @@
+.login-enter-active, .login-leave-active {
+    transition: opacity .5s;
+  }
+  .login-enter, .login-leave-active {
+    opacity: 0;
+  }
