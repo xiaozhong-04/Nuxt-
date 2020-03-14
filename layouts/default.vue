@@ -3,6 +3,7 @@
     <div class="header">
       cnode 论坛
       <nuxt-link to="/">首页</nuxt-link>
+      <nuxt-link to="/order">订单页</nuxt-link>
     </div>
     <div class="main">
       <nuxt />
