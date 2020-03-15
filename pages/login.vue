@@ -96,12 +96,6 @@
 <script>
 export default {
   layout: "login",
-  transition: "login",   // 应用过渡,
-  mounted() {
-    this.$axios.get('/goods').then(res => {
-      console.log(res);
-      
-    })
-  },
+  transition: "login"   // 应用过渡,
 };
 </script>

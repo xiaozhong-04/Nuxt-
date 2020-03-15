@@ -32,7 +32,8 @@ export default {
   plugins: [
     // '~/plugins/mock'
     // {src: '~/plugins/mock', mode: 'server'} // 只在服务器执行
-    {src: '~/plugins/mock', mode: 'client'} // 只在客户端执行
+    { src: '~/plugins/mock', mode: 'client' }, // 只在客户端执行
+    { src: '~/plugins/elementui', mode: 'client' } // 只在浏览器中执行
   ],
   /*
   ** Nuxt.js dev-modules
@@ -60,7 +61,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     }
   }
 }

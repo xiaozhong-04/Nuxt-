@@ -1,5 +1,6 @@
 <template>
   <div>
+    <el-button type="danger">hello~</el-button>
     <!-- 综合区域 start 包括幻灯展示，商城快报 -->
     <div class="colligate w1210 bc mt10">
       <!-- 幻灯区域 start -->
@@ -1494,7 +1495,7 @@
 </template>
 
 <script>
-export default {
+export default {  
   // 设置首页特定的信息
   head() {
     return {
