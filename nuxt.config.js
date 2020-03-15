@@ -23,6 +23,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '~/assets/base.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -46,6 +47,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: 'https://easy-mock.com/mock/5e6dba02fc455f404afb86b1/api/v1'
   },
   /*
   ** Build configuration
