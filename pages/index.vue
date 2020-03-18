@@ -17,13 +17,19 @@
         <div class="col-8">
           <g-swiper />
         </div>
-        <div class="col-2">xxx</div>
+        <div class="col-2">
+          <i-swiper />
+        </div>
       </div>
     </div>
     <!-- 每日特价 -->
     <div class="container">
-      <div class="row gutter">
-        <div class="col-6">xx</div>
+      <div class="row gutter tj">
+        <div class="col-6">
+          <div class="today">
+            <arrow-titile title="每日特价"/>
+          </div>
+        </div>
         <div class="col-6">yy</div>
       </div>
     </div>
@@ -37,7 +43,9 @@ import TopMenu from "../components/TopMenu";
 import TopLbt from "../components/TopLbt";
 import conutDown from "../components/conutDown";
 import GSwiper from "../components/GSwiper";
+import ISwiper from "../components/ISwiper";
 import topFixecd from "../components/topFixecd";
+import ArrowTitile from "../components/ArrowTitile";
 export default {
   components: {
     TopBar,
@@ -45,7 +53,9 @@ export default {
     TopLbt,
     conutDown,
     GSwiper,
-    topFixecd
+    ISwiper,
+    topFixecd,
+    ArrowTitile
   }
 };
 </script>
@@ -58,6 +68,13 @@ export default {
   }
   .footer {
     height: 500px;
+  }
+  .tj {
+    margin-top: 20px;
+    .today {
+      background-color: #fff;
+      padding: 10px;
+    }
   }
 }
 </style>

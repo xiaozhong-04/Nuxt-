@@ -211,19 +211,27 @@ export default {
   methods: {
     left() {
       this.marginLeft = this.marginLeft - 198 * 4;
-      if (this.marginLeft === -198 * 24) {
-        this.transition = "";
-        this.marginLeft = -198 * 4;
+      if (this.marginLeft === -198 * 20) {
+        setTimeout(() => {
+          this.transition = "";
+          this.marginLeft = 0;
+          setTimeout(() => {
+            this.transition = "all 0.5s";
+          }, 100);
+        }, 500);
       }
-      this.transition = "all 0.5s";
     },
     right() {
       this.marginLeft = this.marginLeft + 198 * 4;
       if (this.marginLeft === 0) {
-        this.transition = "";
-        this.marginLeft = -198 * 20;
+        setTimeout(() => {
+          this.transition = "";
+          this.marginLeft = -198 * 20;
+          setTimeout(() => {
+            this.transition = "all 0.5s";
+          }, 100);
+        }, 500);
       }
-      this.transition = "all 0.5s";
     }
   }
 };
