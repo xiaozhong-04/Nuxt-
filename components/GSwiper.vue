@@ -284,7 +284,7 @@ $cellwidth: 198px;
     height: 266px;
     padding: 30px 20px;
     position: relative;
-    ::after {
+    &::after {
       content: "";
       display: block;
       position: absolute;
