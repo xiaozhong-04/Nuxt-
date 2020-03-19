@@ -72,7 +72,17 @@
         </div>
       </div>
     </div>
-    <div class="footer"></div>
+    <div class="footer">
+      <!-- 隔行变色列表 -->
+      <test :data="['tom','jack','lucy','lily']">
+        <!-- <template v-slot:default="slotProps">
+          <h2>hello: {{slotProps.user}}</h2>
+        </template> -->
+        <template  slot-scope="scoped">
+          <h2>hello: {{scoped.user}}</h2>
+        </template>
+      </test>
+    </div>
   </div>
 </template>
 
@@ -87,6 +97,7 @@ import topFixecd from "~/components/topFixecd";
 import Card from "~/components/Card";
 import TeJia from "~/components/TeJia";
 import SanGou from "~/components/SanGou";
+import Test from "~/components/Test";
 export default {
   components: {
     TopBar,
@@ -98,7 +109,8 @@ export default {
     topFixecd,
     Card,
     TeJia,
-    SanGou
+    SanGou,
+    Test
   }
 };
 </script>
