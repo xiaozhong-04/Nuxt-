@@ -73,13 +73,21 @@
       </div>
     </div>
     <div class="footer">
+      <!-- 拖拽 -->
+      <drag>
+        <!-- 轮播图组件 -->
+        <common-swiper nobtns auto :width="200" :count="2" :interval="2000" :data="goods1">
+          <!-- 插槽中设置每个格式中的内容 -->
+          <template v-slot:default="row">
+            <p>{{row.data.title}}</p>
+            <img width="100" :src="row.data.image" alt />
+          </template>
+        </common-swiper>
+      </drag>
       <!-- 隔行变色列表 -->
       <test :data="['tom','jack','lucy','lily']">
-        <!-- <template v-slot:default="slotProps">
+        <template v-slot:default="slotProps">
           <h2>hello: {{slotProps.user}}</h2>
-        </template> -->
-        <template  slot-scope="scoped">
-          <h2>hello: {{scoped.user}}</h2>
         </template>
       </test>
     </div>
@@ -98,6 +106,8 @@ import Card from "~/components/Card";
 import TeJia from "~/components/TeJia";
 import SanGou from "~/components/SanGou";
 import Test from "~/components/Test";
+import CommonSwiper from "~/components/CommonSwiper";
+import Drag from "~/components/Drag";
 export default {
   components: {
     TopBar,
@@ -110,7 +120,55 @@ export default {
     Card,
     TeJia,
     SanGou,
-    Test
+    Test,
+    CommonSwiper,
+    Drag
+  },
+  data() {
+    return {
+      goods1: [
+        {
+          image:
+            "https://img12.360buyimg.com/mobilecms/s140x140_jfs/t1/102581/18/14887/130465/5e6b5b2cE29798e8b/dbccbefccbde263e.jpg.webp",
+          title: "商品名称"
+        },
+        {
+          image:
+            "https://img20.360buyimg.com/mobilecms/s140x140_jfs/t1/90039/32/14506/146108/5e685a23Eb929702d/15793a413c41e1cf.jpg.webp",
+          title: "商品名称"
+        },
+        {
+          image:
+            "https://img13.360buyimg.com/mobilecms/s140x140_jfs/t1/89865/35/14949/185248/5e69e642E03b28f1b/f4137d57389df6df.jpg.webp",
+          title: "商品名称"
+        },
+        {
+          image:
+            "https://img20.360buyimg.com/mobilecms/s140x140_jfs/t1/90039/32/14506/146108/5e685a23Eb929702d/15793a413c41e1cf.jpg.webp",
+          title: "商品名称"
+        },
+        {
+          image:
+            "https://img12.360buyimg.com/mobilecms/s140x140_jfs/t1/102581/18/14887/130465/5e6b5b2cE29798e8b/dbccbefccbde263e.jpg.webp",
+          title: "商品名称"
+        },
+        {
+          image:
+            "https://img20.360buyimg.com/mobilecms/s140x140_jfs/t1/90039/32/14506/146108/5e685a23Eb929702d/15793a413c41e1cf.jpg.webp",
+          title: "商品名称"
+        },
+        {
+          image:
+            "https://img13.360buyimg.com/mobilecms/s140x140_jfs/t1/89865/35/14949/185248/5e69e642E03b28f1b/f4137d57389df6df.jpg.webp",
+          title: "商品名称"
+        },
+        {
+          image:
+            "https://img20.360buyimg.com/mobilecms/s140x140_jfs/t1/90039/32/14506/146108/5e685a23Eb929702d/15793a413c41e1cf.jpg.webp",
+          title: "商品名称"
+        }
+      ]
+    };
   }
 };
 </script>
