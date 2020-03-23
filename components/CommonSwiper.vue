@@ -48,12 +48,27 @@ export default {
     nobtns: {
       type: Boolean,
       default: false
+    },
+    // 是否持续滚动
+    moving: {
+      type: Boolean,
+      default: false
+    },
+    // 是否暂停
+    stop: {
+      type: Boolean,
+      default: false
+    },
+    // 拖拽条的值
+    dragValue: {
+      type: Number,
+      default: 0
     }
   },
   data() {
     return {
       inter: null, // 保存定时器
-      transitionDuration: "0.5s",
+      transitionDuration: this.moving ? "0" : "0.5s",
       marginLeft: -this.count * this.width // 初始位置， 去掉前面多余格式的值
     };
   },
@@ -71,8 +86,16 @@ export default {
     }
   },
   mounted() {
-    if (this.auto) {
-      this.inter = setInterval(this.left, this.interval);
+    // 是否持续滚动
+    if (this.moving) {
+      // 下一帧滚动1像素
+      // requestAnimationFrame: 注册一个函数,这个函数会在页面的下一帧执行
+      requestAnimationFrame(this.left2);
+    } else {
+      // 是否是自动滚动
+      if (this.auto) {
+        this.inter = setInterval(this.left, this.interval);
+      }
     }
   },
   methods: {
@@ -114,6 +137,24 @@ export default {
           }, 100);
         }, 500);
       }
+    },
+    // 滚动1px
+    left2() {
+      // 判断是否暂停
+      if (!this.stop) {
+        // 向左滚动 n 张图片
+        this.marginLeft -= 1;
+        // 是否滚动到最后
+        if (
+          this.marginLeft ==
+          -this.data.length * this.width - this.count * this.width
+        ) {
+          // 切换到初始位置
+          this.marginLeft = -this.count * this.width;
+        }
+      }
+      // 在下一帧刷新时再执行一次
+      requestAnimationFrame(this.left2);
     }
   },
   beforeDestroy() {

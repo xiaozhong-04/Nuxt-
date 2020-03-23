@@ -14,6 +14,7 @@ input {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 body {
@@ -28,6 +29,7 @@ ul {
 a {
   text-decoration: none;
   color: #333;
+
   &:hover {
     color: red;
   }
@@ -71,4 +73,9 @@ input {
     margin-left: -5px;
     margin-right: -5px;
   }
+}
+
+// 公共的的外边距
+.mt20 {
+  margin-top: 20px;
 }

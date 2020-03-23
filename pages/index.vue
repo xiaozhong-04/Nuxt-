@@ -33,6 +33,14 @@
         </div>
       </div>
 
+      <!-- 发现好货 -->
+      <div class="row gutter mt20">
+        <div class="col-2">发现好货</div>
+        <div class="col-10">
+          <drag-swiper :data="goods1" />
+        </div>
+      </div>
+
       <!-- 新品首发.排行榜.好店.中心 -->
       <div class="row gutter xp">
         <div class="col-3">
@@ -73,23 +81,26 @@
       </div>
     </div>
     <div class="footer">
-      <!-- 拖拽 -->
-      <drag>
-        <!-- 轮播图组件 -->
-        <common-swiper nobtns auto :width="200" :count="2" :interval="2000" :data="goods1">
-          <!-- 插槽中设置每个格式中的内容 -->
-          <template v-slot:default="row">
-            <p>{{row.data.title}}</p>
-            <img width="100" :src="row.data.image" alt />
-          </template>
-        </common-swiper>
-      </drag>
-      <!-- 隔行变色列表 -->
-      <test :data="['tom','jack','lucy','lily']">
-        <template v-slot:default="slotProps">
-          <h2>hello: {{slotProps.user}}</h2>
+      <div class="container">
+        <drag-bar @value="onValue" />
+      </div>
+      <!-- 轮播图组件 -->
+      <common-swiper nobtns auto :width="200" :count="2" :interval="2000" :data="goods1">
+        <!-- 插槽中设置每个格式中的内容 -->
+        <template v-slot:default="row">
+          <p>{{row.data.title}}</p>
+          <img width="100" :src="row.data.image" alt />
         </template>
-      </test>
+      </common-swiper>
+      <!-- 拖拽 -->
+      <drag dir="x" :rect="[0,300,0,300]">
+        <!-- 隔行变色列表 -->
+        <test :data="['tom','jack','lucy','lily']">
+          <template v-slot:default="slotProps">
+            <h2>hello: {{slotProps.user}}</h2>
+          </template>
+        </test>
+      </drag>
     </div>
   </div>
 </template>
@@ -108,6 +119,8 @@ import SanGou from "~/components/SanGou";
 import Test from "~/components/Test";
 import CommonSwiper from "~/components/CommonSwiper";
 import Drag from "~/components/Drag";
+import DragBar from "~/components/DragBar";
+import DragSwiper from "~/components/DragSwiper";
 export default {
   components: {
     TopBar,
@@ -122,14 +135,27 @@ export default {
     SanGou,
     Test,
     CommonSwiper,
-    Drag
+    Drag,
+    DragBar,
+    DragSwiper
   },
   data() {
     return {
+      value: "", // 滚动条的进度百分比
       goods1: [
         {
           image:
             "https://img12.360buyimg.com/mobilecms/s140x140_jfs/t1/102581/18/14887/130465/5e6b5b2cE29798e8b/dbccbefccbde263e.jpg.webp",
+          title: "商品名称"
+        },
+        {
+          image:
+            "https://img20.360buyimg.com/mobilecms/s140x140_jfs/t1/90039/32/14506/146108/5e685a23Eb929702d/15793a413c41e1cf.jpg.webp",
+          title: "商品名称"
+        },
+        {
+          image:
+            "https://img13.360buyimg.com/mobilecms/s140x140_jfs/t1/89865/35/14949/185248/5e69e642E03b28f1b/f4137d57389df6df.jpg.webp",
           title: "商品名称"
         },
         {
@@ -169,6 +195,11 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    onValue(value) {
+      this.value = value;
+    }
   }
 };
 </script>
