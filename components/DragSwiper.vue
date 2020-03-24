@@ -9,6 +9,7 @@
       :width="198"
       :count="5"
       :data="data"
+      @dratValue="dratValue"
     >
       <!-- 定义每个格子中的样式 -->
       <template v-slot:default="data">
@@ -47,6 +48,9 @@ export default {
     onValue(value) {
       // 保存倒data 中
       this.dragValue = value;
+    },
+    dratValue(value) {
+      console.log(value);
     }
   }
 };
@@ -54,7 +58,7 @@ export default {
 
 <style lang="scss">
 .dragswiper {
-  padding: 20px 0;
+  padding: 30px 0;
   background-color: #fff;
   &:hover {
     .dragbar {
@@ -64,7 +68,7 @@ export default {
   }
   .dragbar {
     transition: opacity 0.2s;
-    margin-top: 20px;
+    margin-top: 40px;
     opacity: 0;
     // visibility: hidden; // 隐藏,位置保留
   }

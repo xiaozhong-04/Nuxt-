@@ -72,6 +72,18 @@ export default {
       marginLeft: -this.count * this.width // 初始位置， 去掉前面多余格式的值
     };
   },
+  watch: {
+    dragValue: function(newValue, oldValue) {
+      this.marginLeft =
+        (-this.data.length * this.width -
+          this.count * this.width +
+          this.count * this.width) *
+          (this.dragValue / 100) -
+        this.count * this.width;
+      this.$emit("dratValue", this.marginLeft);
+    },
+    aaa: {}
+  },
   // 计算属性 (需要处理之后再使用的数据)
   computed: {
     // 复制了前后格子之后的商品数组
@@ -146,7 +158,7 @@ export default {
         this.marginLeft -= 1;
         // 是否滚动到最后
         if (
-          this.marginLeft ==
+          this.marginLeft <=
           -this.data.length * this.width - this.count * this.width
         ) {
           // 切换到初始位置

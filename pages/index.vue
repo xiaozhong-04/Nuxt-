@@ -35,7 +35,9 @@
 
       <!-- 发现好货 -->
       <div class="row gutter mt20">
-        <div class="col-2">发现好货</div>
+        <div class="col-2">
+          <haohuo />
+        </div>
         <div class="col-10">
           <drag-swiper :data="goods1" />
         </div>
@@ -121,6 +123,7 @@ import CommonSwiper from "~/components/CommonSwiper";
 import Drag from "~/components/Drag";
 import DragBar from "~/components/DragBar";
 import DragSwiper from "~/components/DragSwiper";
+import Haohuo from "~/components/Haohuo";
 export default {
   components: {
     TopBar,
@@ -137,7 +140,8 @@ export default {
     CommonSwiper,
     Drag,
     DragBar,
-    DragSwiper
+    DragSwiper,
+    Haohuo
   },
   data() {
     return {
