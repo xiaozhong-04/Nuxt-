@@ -63,6 +63,11 @@ input {
   }
 }
 
+.col-b20 {
+  float: left;
+  width: 20%;
+}
+
 .gutter {
   [class^=col-] {
     padding-left: 5px;

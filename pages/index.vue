@@ -46,10 +46,10 @@
       <!-- 新品首发.排行榜.好店.中心 -->
       <div class="row gutter xp">
         <div class="col-3">
-          <card title="新品首发" />
+            <m-swiper />
         </div>
         <div class="col-3">
-          <card title="排行榜" />
+            <Topn />
         </div>
         <div class="col-3">
           <card title="逛好店">
@@ -78,32 +78,48 @@
           </card>
         </div>
         <div class="col-3">
-          <card title="领券中心" />
+          <ling-juan />
         </div>
       </div>
     </div>
-    <div class="footer">
-      <div class="container">
-        <drag-bar @value="onValue" />
+
+    <div class="container">
+      <dot-title title="频道广场" />
+      <div class="row gutter">
+        <div class="col-3">
+          <img
+            src="https://img10.360buyimg.com/babel/s290x370_jfs/t1/94263/15/13795/110996/5e5c62b6E895123be/b750358a76df026b.jpg!cc_290x370.webp"
+            alt
+          />
+        </div>
+        <div class="col-3">
+          <img
+            src="https://img20.360buyimg.com/babel/s290x370_jfs/t1/106996/31/14266/154379/5e61eb46E5987c6b7/3fb92e8b5ce5edd1.jpg!cc_290x370.webp"
+            alt
+          />
+        </div>
+        <div style="margin-bottom: 10px" class="col-3" v-for="(item, index) in 16" :key="index">
+          <channelitem
+            title="食品饮料"
+            stitle="吃货嘉年华"
+            limg="https://img14.360buyimg.com/img/s100x100_jfs/t19105/15/106426697/424212/f46938a0/5a5d97c9N1bdd0e89.jpg!cc_100x100.webp"
+            rimg="https://img20.360buyimg.com/img/s100x100_jfs/t26527/284/1636381216/249506/48e209c/5be7da1eNdfc15521.jpg!cc_100x100.webp"
+          />
+        </div>
       </div>
-      <!-- 轮播图组件 -->
-      <common-swiper nobtns auto :width="200" :count="2" :interval="2000" :data="goods1">
-        <!-- 插槽中设置每个格式中的内容 -->
-        <template v-slot:default="row">
-          <p>{{row.data.title}}</p>
-          <img width="100" :src="row.data.image" alt />
-        </template>
-      </common-swiper>
-      <!-- 拖拽 -->
-      <drag dir="x" :rect="[0,300,0,300]">
-        <!-- 隔行变色列表 -->
-        <test :data="['tom','jack','lucy','lily']">
-          <template v-slot:default="slotProps">
-            <h2>hello: {{slotProps.user}}</h2>
-          </template>
-        </test>
-      </drag>
+      <dot-title title="为你推荐" />
+      <div class="row gutter">
+        <div style="margin-bottom: 10px;" class="col-b20" v-for="(item, index) in 25" :key="index">
+          <rec-item
+            title="香可 全实木儿童床上下床母子床男孩女孩床高低床双层床上下铺床子母床两层床成人木床储物床子母床公主床 蓝白色梯柜 上铺宽1300下铺宽1500"
+            :price="2649.00"
+            image="https://img20.360buyimg.com/jdcms/s150x150_jfs/t1/102396/27/6450/179459/5df353b8E240c6afa/b1c52731e234074b.jpg.webp"
+          />
+        </div>
+      </div>
     </div>
+
+    <div class="footer"></div>
   </div>
 </template>
 
@@ -118,12 +134,14 @@ import topFixecd from "~/components/topFixecd";
 import Card from "~/components/Card";
 import TeJia from "~/components/TeJia";
 import SanGou from "~/components/SanGou";
-import Test from "~/components/Test";
-import CommonSwiper from "~/components/CommonSwiper";
-import Drag from "~/components/Drag";
-import DragBar from "~/components/DragBar";
 import DragSwiper from "~/components/DragSwiper";
 import Haohuo from "~/components/Haohuo";
+import LingJuan from "~/components/LingJuan";
+import DotTitle from "~/components/DotTitle";
+import Channelitem from "~/components/Channelitem";
+import RecItem from "~/components/RecItem";
+import MSwiper from "~/components/MSwiper";
+import Topn from "~/components/Topn";
 export default {
   components: {
     TopBar,
@@ -136,12 +154,14 @@ export default {
     Card,
     TeJia,
     SanGou,
-    Test,
-    CommonSwiper,
-    Drag,
-    DragBar,
     DragSwiper,
-    Haohuo
+    Haohuo,
+    LingJuan,
+    DotTitle,
+    Channelitem,
+    RecItem,
+    MSwiper,
+    Topn
   },
   data() {
     return {

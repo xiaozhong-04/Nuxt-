@@ -50,7 +50,7 @@ export default {
       this.dragValue = value;
     },
     dratValue(value) {
-      console.log(value);
+      // console.log(value);
     }
   }
 };
