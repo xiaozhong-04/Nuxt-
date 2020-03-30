@@ -1,35 +1,39 @@
 <template>
   <ul class="cat-menu">
-    <li v-for="(item, index) in 17" :key="index">
+    <!-- 一级分类 -->
+    <li v-for="(item, index) in data" :key="index">
       <div class="cat-menu-title">
-        <nuxt-link to>家用电器 - {{index}}</nuxt-link>
+        <!-- 一级分类名称 -->
+        <nuxt-link to>{{item.cat_name}}</nuxt-link>
       </div>
       <div class="cat-menu-content">
         <div class="row gutter">
           <div class="col-9">
-            <div class="cat-menu-nav">
-              <nuxt-link to>玩3C</nuxt-link>
-              <nuxt-link to>玩3C</nuxt-link>
-              <nuxt-link to>玩3C</nuxt-link>
-              <nuxt-link to>玩3C</nuxt-link>
-              <nuxt-link to>玩3C</nuxt-link>
-            </div>
-            <div v-for="(item, index) in 10" :key="index" class="row cat-menu-nav1">
+            <ul class="cat-menu-nav">
+              <!-- 一级分类下的按钮 -->
+              <li v-for="(item1, index1) in item.btns" :key="index1">
+                <nuxt-link to>{{item1.title}}</nuxt-link>
+              </li>
+            </ul>
+            <!-- 二级分类 -->
+            <div v-for="(item2, index2) in item.children" :key="index2" class="row cat-menu-nav1">
               <div class="col-2">
-                <nuxt-link to>香水彩妆</nuxt-link>
+                <!-- 二级分类名称 -->
+                <nuxt-link to>{{item2.cat_name}}</nuxt-link>
               </div>
+              <!-- 三级分类 -->
               <div class="col-10">
-                <nuxt-link v-for="(item, index) in 15" :key="index" to>哈哈</nuxt-link>
+                <!-- 三级分类名称 -->
+                <nuxt-link
+                  v-for="(item3, index) in item2.children"
+                  :key="index"
+                  to
+                >{{item3.cat_name}}</nuxt-link>
               </div>
             </div>
           </div>
           <div class="col-3">
-            <img
-              v-for="(item, index) in 6"
-              :key="index"
-              src="https://img10.360buyimg.com/vclist/s83x35_jfs/t1/60962/3/12690/7533/5da1929dE1898af88/5a5b552c1f9381ac.jpg.webp"
-              alt
-            />
+            <img v-for="(item4, index) in item.brands" :key="index" :src="item4.image" alt />
             {{index}}
           </div>
         </div>
@@ -37,6 +41,17 @@
     </li>
   </ul>
 </template>
+
+<script>
+export default {
+  props: {
+    data: {
+      type: Array,
+      required: true
+    }
+  }
+};
+</script>
 
 <style lang="scss">
 .cat-menu {
@@ -72,6 +87,9 @@
     display: none;
   }
   &-nav {
+    li {
+      display: inline-block;
+    }
     a {
       margin-right: 5px;
       padding: 3px 10px;
@@ -93,7 +111,7 @@
   &-nav1 {
     padding: 5px;
     a {
-      padding-right: 5px;
+      padding-right: 10px;
     }
     .col-2 {
       font-weight: bold;

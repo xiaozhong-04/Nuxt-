@@ -7,7 +7,7 @@
     <!-- 顶部LOGO﹑搜索 ﹑我的购物车 -->
     <top-menu />
     <!-- 分类 ﹑轮播图-->
-    <top-lbt />
+    <top-lbt :catTreeData="catTreeData" :indexSwiperData="indexSwiperData" />
     <!-- 秒杀 -->
     <div class="container seckill">
       <div class="row">
@@ -46,10 +46,10 @@
       <!-- 新品首发.排行榜.好店.中心 -->
       <div class="row gutter xp">
         <div class="col-3">
-            <m-swiper />
+          <m-swiper />
         </div>
         <div class="col-3">
-            <Topn />
+          <Topn />
         </div>
         <div class="col-3">
           <card title="逛好店">
@@ -162,6 +162,18 @@ export default {
     RecItem,
     MSwiper,
     Topn
+  },
+  // 服务器端执行
+  async asyncData({ $axios }) {
+    // 获取轮播图数据
+    let { data: indexSwiperData } = await $axios.$get("/index_swiper");
+    // 获取三级分类的三级
+    let { data: catTreeData } = await $axios.$get("/cat_tree");
+    // return 返回数据
+    return {
+      indexSwiperData,
+      catTreeData
+    };
   },
   data() {
     return {

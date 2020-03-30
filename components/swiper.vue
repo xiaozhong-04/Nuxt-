@@ -1,11 +1,11 @@
 <template>
   <div class="swiper">
-    <img :style="{opacity}" :src="swiper[content].image" alt />
+    <img :style="{opacity}" :src="data[content].image" alt />
     <ul>
       <li
         @mouseover="content = index"
         :class="{active: content == index}"
-        v-for="(item, index) in swiper.length"
+        v-for="(item, index) in data.length"
         :key="index"
       ></li>
     </ul>
@@ -16,53 +16,28 @@
 
 <script>
 export default {
+  props: {
+    data: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {
       opacity: 1,
       inner: null,
       content: 0,
-      swiper: [
-        {
-          image:
-            "https://img14.360buyimg.com/pop/s590x470_jfs/t1/95796/4/13791/78340/5e5efa6aEab131ed7/5c8c5259348adcfd.jpg.webp",
-          link: "https://www.baidu.com/"
-        },
-        {
-          image:
-            "https://img20.360buyimg.com/pop/s590x470_jfs/t1/96028/36/13238/100913/5e549436Eec2c719f/50ff6d3062ca3557.jpg.webp",
-          link: "https://www.baidu.com/"
-        },
-        {
-          image:
-            "https://img12.360buyimg.com/pop/s590x470_jfs/t1/92286/35/14901/54741/5e6a0415E57c15218/ba3e4e23256f9a29.jpg.webp",
-          link: "https://www.baidu.com/"
-        },
-        {
-          image:
-            "https://img30.360buyimg.com/pop/s590x470_jfs/t1/91861/13/14947/99203/5e6b40f1E44a3dcb4/7825a254c6aeadda.jpg.webp",
-          link: "https://www.baidu.com/"
-        },
-        {
-          image:
-            "https://img12.360buyimg.com/pop/s590x470_jfs/t1/110672/35/8977/191973/5e6ee5d9E42b8d9f4/4162e8a5fcc16d03.png.webp",
-          link: "https://www.baidu.com/"
-        },
-        {
-          image:
-            "https://img20.360buyimg.com/pop/s590x470_jfs/t1/92910/12/14178/100907/5e6112a0E100a47b8/cfffd1867a383ba2.jpg.webp",
-          link: "https://www.baidu.com/"
-        }
-      ]
     };
   },
   mounted() {
     this.inner = setInterval(this.start, 3000);
+    
   },
   methods: {
     start() {
       this.opacity = 0;
       setTimeout(() => {
-        if (this.content == this.swiper.length - 1) {
+        if (this.content == this.data.length - 1) {
           this.content = 0;
         } else {
           this.content++;
@@ -72,14 +47,14 @@ export default {
     },
     zuo() {
       if (this.content == 0) {
-        this.content = this.swiper.length - 1;
+        this.content = this.data.length - 1;
       } else {
         this.content--;
       }
     },
     you() {
-      if (this.content >= this.swiper.length - 1) {
-          this.content = 0
+      if (this.content >= this.data.length - 1) {
+        this.content = 0;
       } else {
         this.content++;
       }

@@ -47,7 +47,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: 'https://easy-mock.com/mock/5e6dba02fc455f404afb86b1/api/v1'
+    baseURL: 'http://rap2.taobao.org:38080/app/mock/249007'
   },
   /*
   ** Build configuration
